@@ -76,21 +76,21 @@ func CasesHandler(w http.ResponseWriter, r *http.Request) {
 	return
 }
 
-func fetchCases(wg *sync.WaitGroup, c *models.CovidCasesModel, dataStruct *entities.CovidCases, CityMunRes string, RegionRes string) {
+func fetchCases(wg *sync.WaitGroup, c *models.CovidCasesModel, dataStruct *entities.CovidCases, CityMunPSGC string, RegionRes string) {
 	defer wg.Done()
 	var err error
 
-	data, err := c.GetCovidCases(CityMunRes, RegionRes)
+	data, err := c.GetCovidCases(CityMunPSGC, RegionRes)
 	if err != nil{
 		log.Fatalf("Error fetching number of cases from db 1: %v", err)
 	}
 	dataStruct.CasesReport = data
 }
 
-func fetchCasesChartData(wg *sync.WaitGroup, c *models.CovidCasesModel, dataStruct *entities.CovidCases, CityMunRes string, RegionRes string) {
+func fetchCasesChartData(wg *sync.WaitGroup, c *models.CovidCasesModel, dataStruct *entities.CovidCases, CityMunPSGC string, RegionRes string) {
 	defer wg.Done()
 
-	data, err := c.GetCasesChartData(CityMunRes, RegionRes)
+	data, err := c.GetCasesChartData(CityMunPSGC, RegionRes)
 	if err != nil{
 		log.Fatalf("Error fetching active cases: %v", err)
 	}
@@ -98,10 +98,10 @@ func fetchCasesChartData(wg *sync.WaitGroup, c *models.CovidCasesModel, dataStru
 	dataStruct.CasesChartData = data
 }
 
-func fetchRecoveriesChartData(wg *sync.WaitGroup, c *models.CovidCasesModel, dataStruct *entities.CovidCases, CityMunRes string, RegionRes string) {
+func fetchRecoveriesChartData(wg *sync.WaitGroup, c *models.CovidCasesModel, dataStruct *entities.CovidCases, CityMunPSGC string, RegionRes string) {
 	defer wg.Done()
 
-	data, err := c.GetRecoveriesChartData(CityMunRes, RegionRes)
+	data, err := c.GetRecoveriesChartData(CityMunPSGC, RegionRes)
 	
 	if err != nil{
 		log.Fatalf("Error fetching cumulative death cases from db 2: %v", err)
@@ -111,10 +111,10 @@ func fetchRecoveriesChartData(wg *sync.WaitGroup, c *models.CovidCasesModel, dat
 }
 
 
-func fetchDeathsChartData(wg *sync.WaitGroup, c *models.CovidCasesModel, dataStruct *entities.CovidCases, CityMunRes string, RegionRes string) {
+func fetchDeathsChartData(wg *sync.WaitGroup, c *models.CovidCasesModel, dataStruct *entities.CovidCases, CityMunPSGC string, RegionRes string) {
 	defer wg.Done()
 
-	data, err := c.GetDeathsChartData(CityMunRes, RegionRes)
+	data, err := c.GetDeathsChartData(CityMunPSGC, RegionRes)
 
 	if err != nil{
 		log.Fatalf("Error fetching cumulative death cases from db 2: %v", err)

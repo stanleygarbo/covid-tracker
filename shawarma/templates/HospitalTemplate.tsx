@@ -184,7 +184,7 @@ export const HospitalTemplate: React.FC<IHospitalTemplate> = ({ data }) => {
           value={Math.floor(data.Icu_o_nc).toString()}
         />
 
-        <h3>non-ICU beds</h3>
+        <h3 style={{ marginTop: 40 }}>non-ICU beds</h3>
         <p className="subtitle">For non-COVID-19 patients</p>
         <ControlledAccordion
           title="Vacant"
