@@ -269,7 +269,7 @@ export const HomeTemplate: React.FC<IHomeTemplate> = ({
         <div className="template__item template__chart">
           <div className="template__item__txt-group">
             <h3>Active</h3>
-            <h4>{activeCases?.Count}</h4>
+            <h4>{activeCases && !isLoading ? activeCases.Count : "---"}</h4>
           </div>
           <div className="template__item__chart">
             <LineChart
@@ -294,7 +294,13 @@ export const HomeTemplate: React.FC<IHomeTemplate> = ({
         <div className="template__item template__chart">
           <div className="template__item__txt-group">
             <h3>Recoveries</h3>
-            <h4>{recoveries?.Count ? recoveries.Count : 0}</h4>
+            <h4>
+              {recoveries && !isLoading
+                ? recoveries.Count
+                : isLoading
+                ? "---"
+                : 0}
+            </h4>
           </div>
           <div className="template__item__chart">
             <LineChart
@@ -321,7 +327,9 @@ export const HomeTemplate: React.FC<IHomeTemplate> = ({
         <div className="template__item template__chart">
           <div className="template__item__txt-group">
             <h3>Deaths</h3>
-            <h4>{deaths?.Count ? deaths.Count : "0"}</h4>
+            <h4>
+              {deaths && !isLoading ? deaths.Count : isLoading ? "---" : 0}
+            </h4>
           </div>
           <div className="template__item__chart">
             <LineChart

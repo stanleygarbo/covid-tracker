@@ -74,7 +74,14 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 const Aside = styled.aside`
-  height: calc(100vh - 64px);
+  ${({ applyPaddingToTop }) =>
+    applyPaddingToTop
+      ? css`
+          height: calc(100vh - 64px);
+        `
+      : css`
+          height: 100vh;
+        `}
   width: 64px;
   position: fixed;
   z-index: 5;

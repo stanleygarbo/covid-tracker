@@ -11,10 +11,10 @@ export default function Hospitals() {
   const getHospitals = async () => {
     let url = "http://192.168.3.51:8000/hospitals";
     if (regionPSGC != "undefined" && regionPSGC) {
-      url = `http://192.168.3.51:8000/hospitals?RegionPSGC=PH0${regionPSGC}`;
+      url = `http://192.168.3.51:8000/hospitals?RegionPSGC=${regionPSGC}`;
     }
     if (cityMunPSGC && cityMunPSGC !== "all") {
-      url = `http://192.168.3.51:8000/hospitals?CityMunPSGC=PH0${cityMunPSGC}`;
+      url = `http://192.168.3.51:8000/hospitals?CityMunPSGC=${cityMunPSGC}`;
     }
 
     const data = await fetch(url);

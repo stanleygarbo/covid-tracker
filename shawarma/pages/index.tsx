@@ -14,7 +14,7 @@ export default function Home() {
       url = `http://192.168.3.51:8000/cases?RegionRes=${regionRes}`;
     }
     if (cityMunPSGC && cityMunPSGC !== "all") {
-      url = `http://192.168.3.51:8000/cases?CityMunPSGC=PH0${cityMunPSGC}`;
+      url = `http://192.168.3.51:8000/cases?CityMunPSGC=${cityMunPSGC}`;
     }
 
     const data = await fetch(url);

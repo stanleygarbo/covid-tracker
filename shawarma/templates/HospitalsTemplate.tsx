@@ -6,6 +6,8 @@ import { ErrorMessage } from "../components/ErrorMessage";
 import MediaCard from "../components/MediaCard";
 import { SelectArea } from "../components/SelectArea";
 import { TopBarProgress } from "../components/TopBarProgress";
+import { useLocation } from "../contexts/LocationContextProvider";
+import { useTheme } from "../contexts/ThemeContextProvider";
 import { IHospitalsTemplate } from "../interfaces/IHospitalsTemplate";
 import { truncate } from "../util/Truncate";
 
@@ -17,7 +19,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     margin-top: 30px;
-    max-width: 590px;
+    max-width: 800px;
 
     & > * {
       margin-top: 20px;
@@ -54,6 +56,9 @@ export const HospitalsTemplate: React.FC<IHospitalsTemplate> = ({
 }) => {
   const router = useRouter();
 
+  const { theme } = useTheme();
+  const { regionPSGC } = useLocation();
+
   if (error) {
     return (
       <ErrorMessage
@@ -71,6 +76,15 @@ export const HospitalsTemplate: React.FC<IHospitalsTemplate> = ({
         <SelectArea />
       </div>
       <div className="cards">
+        {data?.length < 1 && regionPSGC && regionPSGC !== "all" && (
+          <p style={{ color: theme.textPrimaryLight }}>No results found :(</p>
+        )}
+        {!regionPSGC ||
+          (regionPSGC === "all" && (
+            <p style={{ color: theme.textPrimaryLight }}>
+              Please select a region.
+            </p>
+          ))}
         {data?.map((i) => (
           <MediaCard
             key={i.Hfhudcode}
