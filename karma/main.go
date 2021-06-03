@@ -25,6 +25,7 @@ func main(){
 	r := mux.NewRouter()
 	r.HandleFunc("/cases", handlers.CasesHandler).Methods("GET")
 	r.HandleFunc("/hospitals", handlers.HospitalsHandler).Methods("GET")
+	r.HandleFunc("/coords", handlers.CoordsHandler).Methods("GET")
 	// drive.DownloadFile("1t_1wveQS0OUdg0kzGSOZhZAKrSctNUM9", "dataCollect.csv")
 	
 	rd, err := redis.Dial("tcp", "127.0.0.1:6379")
