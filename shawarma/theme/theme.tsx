@@ -18,7 +18,7 @@ const overrides = {
 };
 
 const overridesLight = {
-  overrides: {
+  override: {
     MuiPaper: {
       root: {
         backgroundColor: lightModeColors.primaryLight,
@@ -34,7 +34,7 @@ const overridesLight = {
 };
 
 const overridesDark = {
-  overrides: {
+  override: {
     MuiPaper: {
       root: {
         backgroundColor: darkModeColors.primaryLight,
