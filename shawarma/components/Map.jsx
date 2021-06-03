@@ -46,6 +46,7 @@ export class Map extends Component {
   };
 
   render() {
+    console.log(this.props.google);
     return (
       <Container>
         {this.props.isLoading && (
@@ -53,6 +54,7 @@ export class Map extends Component {
             <CircularProgress />
           </LoaderWrapper>
         )}
+        {}
         <GoogleMap
           google={this.props.google}
           style={containerStyle}
@@ -67,7 +69,7 @@ export class Map extends Component {
           disableDoubleClickZoom={true}
           minZoom={1}
           maxZoom={20}
-          onIdle={() => console.log("is idle")}
+          onLoad={() => console.log("is loaded")}
         >
           {/* {this.props.coords &&
             this.props.coords.map((i, idx) => {
@@ -142,38 +144,6 @@ export class Map extends Component {
     );
   }
 }
-
-const getMapOptions = (maps) => {
-  return {
-    fullscreenControl: false,
-    styles: [
-      {
-        featureType: "poi.business",
-        elementType: "labels",
-        stylers: [
-          {
-            visibility: "off",
-          },
-        ],
-      },
-    ],
-    gestureHandling: "greedy",
-    disableDoubleClickZoom: true,
-    minZoom: 11,
-    maxZoom: 28,
-
-    mapTypeControl: false,
-    mapTypeId: "hybrid",
-
-    mapTypeControlOptions: {
-      labels: true,
-
-      mapTypeIds: ["satellite", "hybrid", "roadmap"],
-    },
-    zoomControl: false,
-    clickableIcons: false,
-  };
-};
 
 export default GoogleApiWrapper({
   apiKey: process.env.NEXT_PUBLIC_GOOGLE_CLOUD_API_KEY,

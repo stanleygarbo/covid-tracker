@@ -26,7 +26,7 @@ const Container = styled.div`
   }
 
   @media (max-width: 700px) {
-    padding: 10px 0 0 0;
+    padding: 10px 0 20px 0;
     & > * {
       margin-top: 0px;
     }
@@ -93,6 +93,7 @@ const Template1 = styled.div`
   .template__banner {
     grid-column: span 2;
     background-image: url("/ncov-go-1.png");
+    background-color: #2c3038;
     background-size: contain;
     background-repeat: no-repeat;
   }

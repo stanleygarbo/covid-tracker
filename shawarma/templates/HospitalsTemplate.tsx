@@ -36,7 +36,7 @@ const Container = styled.div`
   }
 
   @media (max-width: 700px) {
-    padding: 10px 10px 0 10px;
+    padding: 10px 10px 20px 10px;
 
     .select {
       padding: 5px 0px 0px 0px;
