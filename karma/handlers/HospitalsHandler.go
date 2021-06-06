@@ -69,7 +69,7 @@ func HospitalsHandler(w http.ResponseWriter, r *http.Request) {
 			filteredHospitals := entities.Hospitals{}
 
 			for _, v := range hospitals{
-					if (v.City_mun_psgc == "PH"+r.FormValue("CityMunPSGC") || v.City_mun_psgc == "PH0"+r.FormValue("CityMunPSGC")) && (v.Region_psgc == "PH"+r.FormValue("RegionPSGC") && v.Region_psgc == "PH0"+r.FormValue("RegionPSGC")){
+					if (v.City_mun_psgc == "PH"+r.FormValue("CityMunPSGC") || v.City_mun_psgc == "PH0"+r.FormValue("CityMunPSGC")) && (v.Region_psgc == "PH"+r.FormValue("RegionPSGC") || v.Region_psgc == "PH0"+r.FormValue("RegionPSGC")){
 						fmt.Println("appended")
 						filteredHospitals = append(filteredHospitals, v)
 					}
