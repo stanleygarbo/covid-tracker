@@ -10,7 +10,7 @@ GET http://localhost:8000/hospitals HTTP/1.1
 
 ###
 
-GET http://localhost:8000/hospitals?CityMunPSGC=PH083738000 HTTP/1.1
+GET http://localhost:8000/hospitals?CityMunPSGC=83738000 HTTP/1.1
 
 ###
 
