@@ -11,8 +11,9 @@ require (
 	github.com/gorilla/mux v1.8.0 // indirect
 	github.com/jinzhu/gorm v1.9.16 // indirect
 	github.com/jmoiron/sqlx v1.3.4 // indirect
+	github.com/ledongthuc/pdf v0.0.0-20200323191019-23c5852adbd2 // indirect
 	github.com/lib/pq v1.10.1 // indirect
-	github.com/robfig/cron/v3 v3.0.1 // indirect
+	github.com/robfig/cron/v3 v3.0.0 // indirect
 	github.com/rs/cors v1.7.0 // indirect
 	golang.org/x/net v0.0.0-20210508051633-16afe75a6701 // indirect
 	golang.org/x/oauth2 v0.0.0-20210427180440-81ed05c6b58c // indirect

@@ -15,7 +15,7 @@ func (h HospitalsModel) GetHospital(hfhudcode string) (entities.Hospital, error)
 	var res *sql.Row
 	var err error
 
-	res = h.DB.QueryRow("SELECT * FROM data_collect dc1 WHERE dc1.reportdate IN (SELECT MAX(dc2.reportdate) FROM data_collect dc2) AND dc1.hfhudcode = ?;", hfhudcode)
+	res = h.DB.QueryRow("SELECT * FROM facilities f1 WHERE f1.reportdate IN (SELECT MAX(f2.reportdate) FROM facilities f2) AND f1.hfhudcode = ?;", hfhudcode)
 	
 	Hospital := entities.Hospital{}
 
@@ -48,16 +48,19 @@ func (h HospitalsModel) GetHospital(hfhudcode string) (entities.Hospital, error)
 		&Hospital.Other_adm,
 		&Hospital.Susp_asym,
 		&Hospital.Susp_mild,
+		&Hospital.Susp_mod,
 		&Hospital.Susp_severe,
 		&Hospital.Susp_crit,
 		&Hospital.Susp_died,
 		&Hospital.Prob_asym,
 		&Hospital.Prob_mild,
+		&Hospital.Prob_mod,
 		&Hospital.Prob_severe, 
 		&Hospital.Prob_crit,   
 		&Hospital.Prob_died,    
 		&Hospital.Conf_asym,     
 		&Hospital.Conf_mild,    
+		&Hospital.Conf_mod,    
 		&Hospital.Conf_severe,   
 		&Hospital.Conf_crit,     
 		&Hospital.Conf_died,     
@@ -85,7 +88,7 @@ func (h HospitalsModel) GetHospital(hfhudcode string) (entities.Hospital, error)
 func (h HospitalsModel) GetHospitals() ([]entities.Hospital, error){
 	var res *sql.Rows
 	var err error
-	res, err = h.DB.Query("SELECT * FROM data_collect dc1 WHERE dc1.reportdate IN (SELECT MAX(dc2.reportdate) FROM data_collect dc2);")
+	res, err = h.DB.Query("SELECT * FROM facilities f1 WHERE f1.reportdate IN (SELECT MAX(f2.reportdate) FROM facilities f2);")
 
 	if err != nil{
 		return nil, err
@@ -124,16 +127,19 @@ func (h HospitalsModel) GetHospitals() ([]entities.Hospital, error){
 			&Hospital.Other_adm,
 			&Hospital.Susp_asym,
 			&Hospital.Susp_mild,
+			&Hospital.Susp_mod,
 			&Hospital.Susp_severe,
 			&Hospital.Susp_crit,
 			&Hospital.Susp_died,
 			&Hospital.Prob_asym,
 			&Hospital.Prob_mild,
+			&Hospital.Prob_mod,
 			&Hospital.Prob_severe, 
 			&Hospital.Prob_crit,   
 			&Hospital.Prob_died,    
 			&Hospital.Conf_asym,     
 			&Hospital.Conf_mild,    
+			&Hospital.Conf_mod,    
 			&Hospital.Conf_severe,   
 			&Hospital.Conf_crit,     
 			&Hospital.Conf_died,     

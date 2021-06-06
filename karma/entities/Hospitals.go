@@ -29,16 +29,19 @@ type Hospital struct {
 	Other_adm     string
 	Susp_asym     string
 	Susp_mild     string
+	Susp_mod      string
 	Susp_severe   string
 	Susp_crit     string
 	Susp_died     string
 	Prob_asym     string
 	Prob_mild     string
+	Prob_mod      string
 	Prob_severe   string
 	Prob_crit     string
 	Prob_died     string
 	Conf_asym     string
 	Conf_mild     string
+	Conf_mod      string
 	Conf_severe   string
 	Conf_crit     string
 	Conf_died     string
