@@ -22,7 +22,7 @@ var res *sql.Rows
 var ShouldRespond bool = false
 
 func main(){
-	// db.UpdateData()
+	db.UpdateData()
 	ShouldRespond = true
 
 	r := mux.NewRouter()
@@ -48,7 +48,7 @@ func main(){
 	handlers.ShouldRespond = &ShouldRespond
 
 	cors := cors.New(cors.Options{
-    AllowedOrigins: []string{"http://ncovgo.vercel.app", "https://ncovgo.vercel.app", "http://192.168.3.51:3000"},
+    AllowedOrigins: []string{"http://ncovgo.vercel.app", "https://ncovgo.vercel.app"},
     AllowCredentials: true,
     AllowedMethods: []string{"GET"},
     // Enable Debugging for testing, consider disabling in production
