@@ -13,12 +13,12 @@ import InputBase from "@material-ui/core/InputBase";
 import Badge from "@material-ui/core/Badge";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import NotificationsOutlinedIcon from "@material-ui/icons/NotificationsOutlined";
 
 import ToggleSwitch from "./ToggleSwitch";
 import { useTheme } from "../contexts/ThemeContextProvider";
+import TemporaryDrawer from "./TemporaryDrawer";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme: Theme) =>
     title: {
       display: "block",
       minWidth: 90,
+      marginLeft: 15,
     },
     search: {
       position: "relative",
@@ -145,14 +146,7 @@ export default function MuiAppBar() {
             minHeight: 64,
           }}
         >
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
+          <TemporaryDrawer />
           <Typography className={classes.title} variant="h6" noWrap>
             NCoV-Go
           </Typography>

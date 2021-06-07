@@ -57,6 +57,7 @@ const GlobalStyles = createGlobalStyle`
   #nprogress .bar {
     background: ${({ theme }) => theme.accent} !important;
     z-index: 999999;
+    margin-top: 64px;
   }
 
   #nprogress .peg {

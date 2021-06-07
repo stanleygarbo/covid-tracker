@@ -6,6 +6,7 @@ import Switch, { SwitchClassKey, SwitchProps } from "@material-ui/core/Switch";
 import { useTheme } from "../contexts/ThemeContextProvider";
 import { Brightness4Outlined, Brightness7Outlined } from "@material-ui/icons";
 import { IconButton } from "@material-ui/core";
+import { IToggleSwitch } from "../interfaces/IToggleSwitch";
 
 interface Styles extends Partial<Record<SwitchClassKey, string>> {
   focusVisible?: string;
@@ -77,7 +78,7 @@ const IOSSwitch = withStyles((theme: Theme) =>
   );
 });
 
-export default function CustomizedSwitches() {
+export default function CustomizedSwitches({ label = "" }: IToggleSwitch) {
   const { isDarkMode, toggleDarkMode, theme } = useTheme();
 
   return (
@@ -98,7 +99,7 @@ export default function CustomizedSwitches() {
           />
         }
         style={{ marginRight: 0 }}
-        label=""
+        label={label}
       />
       <IconButton
         style={{ color: theme.textPrimaryDark }}
