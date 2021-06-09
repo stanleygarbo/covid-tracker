@@ -19,14 +19,14 @@ func UpdateData() {
 
 	fmt.Println("Copying csv files to docker container...")
 
-	cmd := exec.Command("docker", "cp", "tmp/covidCases.csv", "mysql-0:/tmp/")
+	cmd := exec.Command("docker", "cp", "tmp/covidCases.csv", "karma_mysql_0:/tmp/")
 
 	err = cmd.Run()
 	if err != nil {
 		log.Fatalf("Error executing command: %v\n", err)
 	}
 
-	cmd2 := exec.Command("docker", "cp", "tmp/facilities.csv", "mysql-0:/tmp/")
+	cmd2 := exec.Command("docker", "cp", "tmp/facilities.csv", "karma_mysql_0:/tmp/")
 
 	err = cmd2.Run()
 	if err != nil {
