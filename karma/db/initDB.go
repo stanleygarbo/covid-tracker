@@ -119,7 +119,7 @@ func InitDB() {
 		log.Fatalf("Error creating coords table: %v \n", err)
 	}
 
-	cmd := exec.Command("docker", "cp", "tmp/coords.csv", "karma_mysql_1:/tmp/")
+	cmd := exec.Command("/bin/sh", "-c", "docker cp tmp/coords.csv karma_mysql_1:/tmp/")
 
 	err = cmd.Run()
 	if err != nil {
