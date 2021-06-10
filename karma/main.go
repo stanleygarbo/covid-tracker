@@ -22,6 +22,7 @@ var res *sql.Rows
 var ShouldRespond bool = false
 
 func main(){
+	db.InitDB()
 	db.UpdateData()
 	ShouldRespond = true
 
@@ -48,7 +49,7 @@ func main(){
 	handlers.ShouldRespond = &ShouldRespond
 
 	cors := cors.New(cors.Options{
-    AllowedOrigins: []string{"http://ncovgo.vercel.app", "https://ncovgo.vercel.app"},
+    AllowedOrigins: []string{"http://ncovgo.vercel.app", "https://ncovgo.vercel.app", "https://ncovgo.com", "http://ncovgo.com"},
     AllowCredentials: true,
     AllowedMethods: []string{"GET"},
     // Enable Debugging for testing, consider disabling in production
