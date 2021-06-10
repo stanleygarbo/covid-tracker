@@ -2,7 +2,8 @@ package db
 
 import (
 	"log"
-	"os/exec"
+
+	"github.com/go-sql-driver/mysql"
 )
 
 func InitDB() {
@@ -12,7 +13,7 @@ func InitDB() {
 	}
 
 	_, err = db.Query(`
-		CREATE TABLE facilities_schema(
+		CREATE TABLE IF NOT EXISTS facilities_schema(
 			hfhudcode varchar(255),
 			id varchar(255),
 			cfname varchar(255),
@@ -77,7 +78,7 @@ func InitDB() {
 	}
 	
 	_, err = db.Query(`
-		CREATE TABLE cases_schema(
+		CREATE TABLE IF NOT EXISTS cases_schema(
 			CaseCode varchar(100), 
 			Age varchar(255), 
 			AgeGroup varchar(255), 
@@ -107,7 +108,7 @@ func InitDB() {
 	}
 
 	_, err = db.Query(`
-		CREATE TABLE coords(
+		CREATE TABLE IF NOT EXISTS coords(
 			id VARCHAR(255),
 			type VARCHAR(255),
 			isSinglePoint VARCHAR(50),
@@ -119,15 +120,10 @@ func InitDB() {
 		log.Fatalf("Error creating coords table: %v \n", err)
 	}
 
-	cmd := exec.Command("/bin/sh", "-c", "docker cp tmp/coords.csv karma_mysql_1:/tmp/")
-
-	err = cmd.Run()
-	if err != nil {
-		log.Fatalf("Error executing command: %v\n", err)
-	}
+	mysql.RegisterLocalFile("./tmp/coords.csv")
 
 	_, err = db.Query(`
-		LOAD DATA INFILE '/tmp/coords.csv' 
+		LOAD DATA LOCAL INFILE './tmp/coords.csv' 
 		INTO TABLE coords 
 		FIELDS TERMINATED BY ';' 
 		LINES TERMINATED BY '\n'
@@ -135,5 +131,4 @@ func InitDB() {
 	if err != nil {
 		log.Fatalf("Error creating coords table: %v \n", err)
 	}
-	
 }

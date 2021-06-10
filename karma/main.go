@@ -21,6 +21,14 @@ var err error
 var res *sql.Rows
 var ShouldRespond bool = false
 
+type CoordsRow struct{
+	Id  string
+	Type  string
+	IsSinglePoint  string
+	Lat  string
+	Lng  string
+}
+
 func main(){
 	db.InitDB()
 	db.UpdateData()
@@ -31,7 +39,7 @@ func main(){
 	r.HandleFunc("/hospitals", handlers.HospitalsHandler).Methods("GET")
 	r.HandleFunc("/coords", handlers.CoordsHandler).Methods("GET")
 
-	rd, err := redis.Dial("tcp", "127.0.0.1:6379")
+	rd, err := redis.Dial("tcp", "karma_redis_1:6379")
 	if err != nil{
 		log.Fatalf("Redis Error: %v", err)
 	}

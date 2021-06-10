@@ -5,7 +5,8 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
-	"os/exec"
+
+	"github.com/go-sql-driver/mysql"
 )
 
 func UpdateData() {
@@ -15,25 +16,10 @@ func UpdateData() {
 
 	drive.DownloadCovidCasesAndFacilitiesCSV()
 
-	// ---------- Copy downloaded CSVs to docker container
+	// -- registering local files in go https://www.programmersought.com/article/27101493129/
 
-	fmt.Println("Copying csv files to docker container...")
-
-	cmd := exec.Command("/bin/sh", "-c", "docker cp tmp/covidCases.csv", "karma_mysql_1:/tmp/")
-
-	err = cmd.Run()
-	if err != nil {
-		log.Fatalf("Error executing command: %v\n", err)
-	}
-
-	cmd2 := exec.Command("/bin/sh", "-c", "docker cp mp/facilities.csv", "karma_mysql_1:/tmp/")
-
-	err = cmd2.Run()
-	if err != nil {
-		log.Fatalf("Error executing command: %v\n", err)
-	}
-
-	fmt.Println("Done copying csv files to docker container")
+	mysql.RegisterLocalFile("./tmp/facilities.csv")
+	mysql.RegisterLocalFile("./tmp/covidCases.csv")
 
 	// ----------- connect to db
 
@@ -69,7 +55,7 @@ func UpdateData() {
 	fmt.Println("Loading csv data to table cases...")
 
 	_, err = db.Query(`
-		LOAD DATA INFILE '/tmp/covidCases.csv'
+		LOAD DATA LOCAL INFILE './tmp/covidCases.csv'
 		INTO TABLE cases
 		FIELDS TERMINATED BY ',' ENCLOSED BY '"'
 		LINES TERMINATED BY '\n'
@@ -107,7 +93,7 @@ func UpdateData() {
 	fmt.Println("Loading csv data into table facilities...")
 
 	_, err = db.Query(`
-		LOAD DATA INFILE '/tmp/facilities.csv' INTO TABLE facilities FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS
+		LOAD DATA LOCAL INFILE './tmp/facilities.csv' INTO TABLE facilities FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS
 	;`)
 	if err != nil {
 		log.Fatalf("Err db query: %v\n", err)

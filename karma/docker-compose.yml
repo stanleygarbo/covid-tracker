@@ -9,18 +9,27 @@ services:
       MYSQL_ROOT_PASSWORD: "haynako"
       MYSQL_PASSWORD: "haynako"
       MYSQL_DATABASE: "covid_tracker"
-    command: --secure-file-priv=/tmp/
+    command: --local-infile=1
 
   redis:
     image: redis
     ports:
       - "6379:6379"
 
-  caddy:
-    image: caddy
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile
+  # caddy:
+  #   image: caddy
+  #   restart: unless-stopped
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - ./Caddyfile:/etc/caddy/Caddyfile
+
+  web:
+    image: golang
+    build: .
+    restart: always
+    depends_on:
+      - mysql
+    links:
+      - mysql:mysql

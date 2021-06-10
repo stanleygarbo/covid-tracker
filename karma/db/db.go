@@ -8,7 +8,7 @@ var db *sql.DB
 var err error
 
 func GetDB() (db *sql.DB, err error) {
-	db, err = sql.Open("mysql", "root:haynako@tcp(127.0.0.1:3306)/covid_tracker")
+	db, err = sql.Open("mysql", "root:haynako@tcp(karma_mysql_1:3306)/covid_tracker")
 	if err != nil{
 		return nil, err
 	}
