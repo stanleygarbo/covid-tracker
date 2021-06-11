@@ -25,7 +25,7 @@ const Hospital = ({ data }) => {
 export async function getServerSideProps(ctx) {
   const { id } = ctx.params;
 
-  const url = `http://192.168.3.51:8000/hospitals?hfhudcode=${id}`;
+  const url = `https://ncovgo.stanleygarbo.com/hospitals?hfhudcode=${id}`;
 
   const res = await fetch(url);
 

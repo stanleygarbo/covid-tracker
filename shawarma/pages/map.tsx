@@ -15,7 +15,7 @@ export default function MapPage() {
   const { theme } = useTheme();
 
   const getCases = async () => {
-    let url = "http://192.168.3.51:8000/coords";
+    let url = "https://ncovgo.stanleygarbo.com/coords";
 
     const data = await fetch(url);
 

@@ -9,12 +9,12 @@ export default function Hospitals() {
   const { theme } = useTheme();
 
   const getHospitals = async () => {
-    let url = "http://192.168.3.51:8000/hospitals";
+    let url = "https://ncovgo.stanleygarbo.com/hospitals";
     if (regionPSGC != "undefined" && regionPSGC) {
-      url = `http://192.168.3.51:8000/hospitals?RegionPSGC=${regionPSGC}`;
+      url = `https://ncovgo.stanleygarbo.com/hospitals?RegionPSGC=${regionPSGC}`;
     }
     if (cityMunPSGC && cityMunPSGC !== "all") {
-      url = `http://192.168.3.51:8000/hospitals?CityMunPSGC=${cityMunPSGC}`;
+      url = `https://ncovgo.stanleygarbo.com/hospitals?CityMunPSGC=${cityMunPSGC}`;
     }
 
     const data = await fetch(url);
