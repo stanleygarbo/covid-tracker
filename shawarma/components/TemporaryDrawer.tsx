@@ -11,7 +11,7 @@ import Menu from "@material-ui/icons/Menu";
 import Facebook from "@material-ui/icons/Facebook";
 import HomeIcon from "@material-ui/icons/Home";
 import ExploreIcon from "@material-ui/icons/Explore";
-import PersonIcon from "@material-ui/icons/Person";
+import LocalHospitalIcon from "@material-ui/icons/LocalHospital";
 import { useTheme } from "../contexts/ThemeContextProvider";
 import { useRouter } from "next/router";
 import { IconButton } from "@material-ui/core";
@@ -80,7 +80,7 @@ export default function TemporaryDrawer() {
           {
             linkName: "Hospitals",
             linkUrl: "/hospitals",
-            linkIcon: <PersonIcon />,
+            linkIcon: <LocalHospitalIcon />,
           },
           {
             linkName: "About",
@@ -92,6 +92,9 @@ export default function TemporaryDrawer() {
             key={index}
             button
             component="a"
+            onClick={() => {
+              router.push(link.linkUrl);
+            }}
             target="blank"
             style={{
               backgroundColor: pathname === link.linkUrl && theme.accent + "20",
