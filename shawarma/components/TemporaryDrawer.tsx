@@ -115,7 +115,7 @@ export default function TemporaryDrawer() {
       <Divider />
 
       <List>
-        {[
+        {/* {[
           {
             linkName: "Facebook page",
             linkUrl: "https://www.facebook.com/coderko/",
@@ -132,7 +132,7 @@ export default function TemporaryDrawer() {
             <ListItemIcon>{link.linkIcon}</ListItemIcon>
             <ListItemText primary={link.linkName} />
           </ListItem>
-        ))}
+        ))} */}
 
         <ListItem button onClick={toggleDarkMode}>
           <ListItemIcon>

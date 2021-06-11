@@ -7,14 +7,14 @@ import {
 } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
+// import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
-import Badge from "@material-ui/core/Badge";
+// import InputBase from "@material-ui/core/InputBase";
+// import Badge from "@material-ui/core/Badge";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import SearchIcon from "@material-ui/icons/Search";
-import NotificationsOutlinedIcon from "@material-ui/icons/NotificationsOutlined";
+// import SearchIcon from "@material-ui/icons/Search";
+// import NotificationsOutlinedIcon from "@material-ui/icons/NotificationsOutlined";
 
 import ToggleSwitch from "./ToggleSwitch";
 import { useTheme } from "../contexts/ThemeContextProvider";
@@ -100,9 +100,9 @@ export default function MuiAppBar() {
 
   const isMenuOpen = Boolean(anchorEl);
 
-  const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
+  // const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
@@ -150,7 +150,7 @@ export default function MuiAppBar() {
           <Typography className={classes.title} variant="h6" noWrap>
             NCoV-Go
           </Typography>
-          <div className={classes.search}>
+          {/* <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
@@ -162,11 +162,11 @@ export default function MuiAppBar() {
               }}
               inputProps={{ "aria-label": "search" }}
             />
-          </div>
+          </div> */}
 
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton
+            {/* <IconButton
               edge="end"
               aria-label="search"
               aria-haspopup="true"
@@ -174,13 +174,13 @@ export default function MuiAppBar() {
               style={{ marginRight: 10 }}
             >
               <SearchIcon />
-            </IconButton>
+            </IconButton> */}
             <ToggleSwitch />
-            <IconButton aria-label="show 17 new notifications" color="inherit">
+            {/* <IconButton aria-label="show 17 new notifications" color="inherit">
               <Badge badgeContent={17} color="secondary">
                 <NotificationsOutlinedIcon />
               </Badge>
-            </IconButton>
+            </IconButton> */}
           </div>
         </Toolbar>
       </AppBar>
