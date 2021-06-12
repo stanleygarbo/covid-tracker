@@ -9,6 +9,8 @@ services:
       MYSQL_ROOT_PASSWORD: "haynako"
       MYSQL_PASSWORD: "haynako"
       MYSQL_DATABASE: "covid_tracker"
+    cap_add:
+      - SYS_NICE # CAP_SYS_NICE
     command: --local-infile=1
 
   redis:
