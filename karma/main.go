@@ -57,11 +57,9 @@ func main(){
 	handlers.ShouldRespond = &ShouldRespond
 
 	cors := cors.New(cors.Options{
-    AllowedOrigins: []string{"http://ncovgo.vercel.app", "https://ncovgo.vercel.app", "https://ncovgo.com", "http://ncovgo.com"},
+    AllowedOrigins: []string{"http://ncovgo.vercel.app", "https://ncovgo.vercel.app", "https://ncovgo.com", "http://ncovgo.com", "http://192.168.3.51:3000"},
     AllowCredentials: true,
     AllowedMethods: []string{"GET"},
-    // Enable Debugging for testing, consider disabling in production
-    Debug: true,
 	})
 
 	handler := cors.Handler(r)
