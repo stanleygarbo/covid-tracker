@@ -108,6 +108,10 @@ func InitDB() {
 	}
 
 	_, err = db.Query(`
+		DROP TABLE IF EXISTS coords;
+	`)
+
+	_, err = db.Query(`
 		CREATE TABLE IF NOT EXISTS coords(
 			id VARCHAR(255),
 			type VARCHAR(255),
