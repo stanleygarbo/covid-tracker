@@ -49,7 +49,7 @@ func main(){
 		MaxIdle:     10,
 		IdleTimeout: 240 * time.Second,
 		Dial: func() (redis.Conn, error) {
-			return redis.Dial("tcp", "localhost:6379")
+			return redis.Dial("tcp", "karma_redis_1:6379")
 		},
 	}
 
