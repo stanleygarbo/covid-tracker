@@ -2,7 +2,6 @@ package db
 
 import (
 	"02_covid_tracker/drive"
-	"database/sql"
 	"fmt"
 	"log"
 
@@ -10,8 +9,6 @@ import (
 )
 
 func UpdateData() {
-	var res *sql.Rows
-
 	// ---------- download csv
 
 	drive.DownloadCovidCasesAndFacilitiesCSV()
@@ -31,19 +28,15 @@ func UpdateData() {
 
 	// ----------- load cases to db
 
-	res, err = db.Query("SHOW TABLES LIKE 'cases';")
+	_, err = db.Query("SHOW TABLES LIKE 'cases';")
 	if err != nil {
 		log.Fatalf("Err db query: %v\n", err)
 	}
 
-	if res.Next(){
-		fmt.Println("Dropping table cases...")
-	
-		_, err = db.Query("DROP TABLE cases;")
-		if err != nil {
-			log.Fatalf("Err db query: %v\n", err)
-		}
-	} 
+	_, err = db.Query("DROP TABLE IF EXISTS cases;")
+	if err != nil {
+		log.Fatalf("Err db query: %v\n", err)
+	}
 
 	fmt.Println("Creating table cases like cases_schema...")
 
@@ -69,19 +62,15 @@ func UpdateData() {
 
 	// ------------------ load facilities to db
 
-	res, err = db.Query("SHOW TABLES LIKE 'facilities';")
+	_, err = db.Query("SHOW TABLES LIKE 'facilities';")
 	if err != nil {
 		log.Fatalf("Err db query: %v\n", err)
 	}
 
-	if res.Next(){
-		fmt.Println("Dropping table facilities...")
-
-		_, err = db.Query("DROP TABLE facilities;")
-		if err != nil {
-			log.Fatalf("Err db query: %v\n", err)
-		}
-	} 
+	_, err = db.Query("DROP TABLE IF EXISTS facilities;")
+	if err != nil {
+		log.Fatalf("Err db query: %v\n", err)
+	}
 
 	fmt.Println("Creating table facilities like facilities_schema...")
 
@@ -100,5 +89,4 @@ func UpdateData() {
 	}
 
 	fmt.Println("Done loading csv data into table facilities")
-
 }
