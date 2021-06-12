@@ -49,9 +49,7 @@ func (m ActiveCaseCoordsModel) GetAll() ([]entities.ActiveCaseCoords, error){
 	
 
 		if i == 3 {
-			if caseCoords.Viewport.NorthEast.Lat - caseCoords.Viewport.SouthWest.Lat < 0.2580000000000001 && caseCoords.Viewport.NorthEast.Lng - caseCoords.Viewport.SouthWest.Lng < 0.2580000000000001{
-				casesCoords = append(casesCoords, caseCoords)
-			}
+			casesCoords = append(casesCoords, caseCoords)
 			caseCoords = entities.ActiveCaseCoords{}
 			i = 0
 		}
