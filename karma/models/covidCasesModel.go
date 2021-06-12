@@ -16,9 +16,9 @@ func (c CovidCasesModel) GetCovidCases(CityMunPSGC string, RegionRes string) ([]
 	if CityMunPSGC == "" && RegionRes == "" {
 		res, err = c.DB.Query("SELECT HealthStatus, COUNT(*) AS Count FROM cases GROUP BY HealthStatus;")
 	} else if CityMunPSGC != "" && RegionRes != "" {
-		res, err = c.DB.Query("SELECT HealthStatus, COUNT(*) AS Count FROM cases WHERE CityMuniPSGC = ? AND RegionRes = ? GROUP BY HealthStatus;", CityMunPSGC, RegionRes)
+		res, err = c.DB.Query("SELECT HealthStatus, COUNT(*) AS Count FROM cases WHERE (CityMuniPSGC = CONCAT(PH,?) OR CityMuniPSGC = CONCAT(PH0,?)) AND RegionRes = ? GROUP BY HealthStatus;", CityMunPSGC, CityMunPSGC, RegionRes)
 	} else if CityMunPSGC != "" {
-		res, err = c.DB.Query("SELECT HealthStatus, COUNT(*) AS Count FROM cases WHERE CityMuniPSGC = ? GROUP BY HealthStatus;", CityMunPSGC)
+		res, err = c.DB.Query("SELECT HealthStatus, COUNT(*) AS Count FROM cases WHERE (CityMuniPSGC = CONCAT(PH,?) OR CityMuniPSGC = CONCAT(PH0,?)) GROUP BY HealthStatus;", CityMunPSGC, CityMunPSGC)
 	}	else if RegionRes != "" {
 		res, err = c.DB.Query("SELECT HealthStatus, COUNT(*) AS Count FROM cases WHERE RegionRes = ? GROUP BY HealthStatus;", RegionRes)
 	}
@@ -49,9 +49,9 @@ func (c CovidCasesModel) GetCasesChartData(CityMunPSGC string, RegionRes string)
 	if CityMunPSGC == "" && RegionRes == "" {
 		res, err = c.DB.Query("SELECT DateRepConf AS Date, COUNT(*) AS Count FROM cases GROUP BY DateRepConf ORDER BY DateRepConf ASC;")
 	} else if CityMunPSGC != "" && RegionRes != "" {
-		res, err = c.DB.Query("SELECT DateRepConf AS Date, COUNT(*) AS Count FROM cases WHERE CityMuniPSGC = ? AND RegionRes = ? GROUP BY DateRepConf ORDER BY DateRepConf ASC;", CityMunPSGC, RegionRes)
+		res, err = c.DB.Query("SELECT DateRepConf AS Date, COUNT(*) AS Count FROM cases WHERE (CityMuniPSGC = CONCAT(PH,?) OR CityMuniPSGC = CONCAT(PH0,?)) AND RegionRes = ? GROUP BY DateRepConf ORDER BY DateRepConf ASC;", CityMunPSGC,CityMunPSGC, RegionRes)
 	} else if CityMunPSGC != "" {
-		res, err = c.DB.Query("SELECT DateRepConf AS Date, COUNT(*) AS Count FROM cases WHERE CityMuniPSGC = ? GROUP BY DateRepConf ORDER BY DateRepConf ASC;", CityMunPSGC)
+		res, err = c.DB.Query("SELECT DateRepConf AS Date, COUNT(*) AS Count FROM cases WHERE (CityMuniPSGC = CONCAT(PH,?) OR CityMuniPSGC = CONCAT(PH0,?)) GROUP BY DateRepConf ORDER BY DateRepConf ASC;", CityMunPSGC,CityMunPSGC)
 	}	else if RegionRes != "" {
 		res, err = c.DB.Query("SELECT DateRepConf AS Date, COUNT(*) AS Count FROM cases WHERE RegionRes = ? GROUP BY DateRepConf ORDER BY DateRepConf ASC;", RegionRes)
 	}
@@ -82,9 +82,9 @@ func (c CovidCasesModel) GetRecoveriesChartData(CityMunPSGC string, RegionRes st
 	if CityMunPSGC == "" && RegionRes == "" {
 		res, err = c.DB.Query("SELECT DateRecover AS Date, COUNT(*) AS Count FROM cases WHERE HealthStatus = 'RECOVERED' GROUP BY DateRecover ORDER BY DateRecover ASC;")
 	} else if CityMunPSGC != "" && RegionRes != "" {
-		res, err = c.DB.Query("SELECT DateRecover AS Date, COUNT(*) AS Count FROM cases WHERE HealthStatus = 'RECOVERED' AND CityMuniPSGC = ? AND RegionRes = ? GROUP BY DateRecover ORDER BY DateRecover ASC;", CityMunPSGC, RegionRes)
+		res, err = c.DB.Query("SELECT DateRecover AS Date, COUNT(*) AS Count FROM cases WHERE HealthStatus = 'RECOVERED' AND (CityMuniPSGC = CONCAT(PH,?) OR CityMuniPSGC = CONCAT(PH0,?)) AND RegionRes = ? GROUP BY DateRecover ORDER BY DateRecover ASC;", CityMunPSGC,CityMunPSGC, RegionRes)
 	} else if CityMunPSGC != "" {
-		res, err = c.DB.Query("SELECT DateRecover AS Date, COUNT(*) AS Count FROM cases WHERE HealthStatus = 'RECOVERED' AND CityMuniPSGC = ? GROUP BY DateRecover ORDER BY DateRecover ASC;", CityMunPSGC)
+		res, err = c.DB.Query("SELECT DateRecover AS Date, COUNT(*) AS Count FROM cases WHERE HealthStatus = 'RECOVERED' AND (CityMuniPSGC = CONCAT(PH,?) OR CityMuniPSGC = CONCAT(PH0,?)) GROUP BY DateRecover ORDER BY DateRecover ASC;", CityMunPSGC,CityMunPSGC)
 	}	else if RegionRes != "" {
 		res, err = c.DB.Query("SELECT DateRecover AS Date, COUNT(*) AS Count FROM cases WHERE HealthStatus = 'RECOVERED' AND RegionRes = ? GROUP BY DateRecover ORDER BY DateRecover ASC;", RegionRes)
 	}
@@ -115,9 +115,9 @@ func (c CovidCasesModel) GetDeathsChartData(CityMunPSGC string, RegionRes string
 	if CityMunPSGC == "" && RegionRes == "" {
 		res, err = c.DB.Query("SELECT DateDied AS Date, COUNT(*) AS Count FROM cases WHERE HealthStatus = 'DIED' GROUP BY DateDied ORDER BY DateDied ASC;")
 	} else if CityMunPSGC != "" && RegionRes != "" {
-		res, err = c.DB.Query("SELECT DateDied AS Date, COUNT(*) AS Count FROM cases WHERE HealthStatus = 'DIED' AND CityMuniPSGC = ? AND RegionRes = ? GROUP BY DateDied ORDER BY DateDied ASC;", CityMunPSGC, RegionRes)
+		res, err = c.DB.Query("SELECT DateDied AS Date, COUNT(*) AS Count FROM cases WHERE HealthStatus = 'DIED' AND (CityMuniPSGC = CONCAT(PH,?) OR CityMuniPSGC = CONCAT(PH0,?)) GROUP BY DateDied ORDER BY DateDied ASC;", CityMunPSGC,CityMunPSGC, RegionRes)
 	} else if CityMunPSGC != "" {
-		res, err = c.DB.Query("SELECT DateDied AS Date, COUNT(*) AS Count FROM cases WHERE HealthStatus = 'DIED' AND CityMuniPSGC = ? GROUP BY DateDied ORDER BY DateDied ASC;", CityMunPSGC)
+		res, err = c.DB.Query("SELECT DateDied AS Date, COUNT(*) AS Count FROM cases WHERE HealthStatus = 'DIED' AND (CityMuniPSGC = CONCAT(PH,?) OR CityMuniPSGC = CONCAT(PH0,?)) GROUP BY DateDied ORDER BY DateDied ASC;", CityMunPSGC,CityMunPSGC)
 	}	else if RegionRes != "" {
 		res, err = c.DB.Query("SELECT DateDied AS Date, COUNT(*) AS Count FROM cases WHERE HealthStatus = 'DIED' AND RegionRes = ? GROUP BY DateDied ORDER BY DateDied ASC;", RegionRes)
 	}
