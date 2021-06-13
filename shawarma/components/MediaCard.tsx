@@ -39,7 +39,6 @@ const useStyles = makeStyles((theme: Theme) =>
       width: 151,
       height: "100%",
       background: darkModeColors.accent,
-      borderRadius: 15,
       "@media(max-width:390px)": {
         width: 121,
       },
