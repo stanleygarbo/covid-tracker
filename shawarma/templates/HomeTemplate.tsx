@@ -129,6 +129,16 @@ const Template1 = styled.div`
       }
     }
   }
+
+  @media (max-width: 435px) {
+    .template__item {
+      &__txt-group {
+        h4 {
+          font-size: 20px;
+        }
+      }
+    }
+  }
 `;
 
 const Template2 = styled.div`
