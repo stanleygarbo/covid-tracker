@@ -4,7 +4,7 @@ import Head from "next/head";
 import { ISEO } from "../interfaces/ISEO";
 import { useRouter } from "next/router";
 
-export const SEO: React.FC<ISEO> = ({ title, description }) => {
+export const SEO: React.FC<ISEO> = ({ title, description, themeColor }) => {
   const { theme } = useTheme();
 
   const { pathname } = useRouter();
@@ -13,7 +13,10 @@ export const SEO: React.FC<ISEO> = ({ title, description }) => {
     <Head>
       <title>{title}</title>
       <meta name="description" content={description} />
-      <meta name="theme-color" content={theme.primaryLight} />
+      <meta
+        name="theme-color"
+        content={themeColor ? themeColor : theme.primaryLight}
+      />
       <link rel="icon" href="/favicon.ico" />
       <meta property="og:title" content={title} key="ogtitle" />
       <meta property="og:description" content={description} key="ogdesc" />

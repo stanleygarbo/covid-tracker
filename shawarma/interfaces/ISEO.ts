@@ -4,4 +4,5 @@ export interface ISEO {
   currentURL?: string;
   previewImage?: string;
   siteName?: string;
+  themeColor?: string;
 }
