@@ -14,7 +14,7 @@ export default function Home() {
       url = `https://ncovgo.stanleygarbo.com/cases?RegionRes=${regionRes}`;
     }
     if (cityMunPSGC && cityMunPSGC !== "all") {
-      url = `https://ncovgo.stanleygarbo.com/cases?CityMunPSGC=PH0${cityMunPSGC}`;
+      url = `https://ncovgo.stanleygarbo.com/cases?CityMunPSGC=${cityMunPSGC}`;
     }
 
     const data = await fetch(url);

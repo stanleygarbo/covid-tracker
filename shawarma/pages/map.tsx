@@ -27,6 +27,8 @@ export default function MapPage() {
     keepPreviousData: true,
   });
 
+  console.log(data)
+
   return (
     <Container>
       <Head>
