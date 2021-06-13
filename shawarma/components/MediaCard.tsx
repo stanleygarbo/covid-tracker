@@ -10,6 +10,7 @@ import { CardActionArea } from "@material-ui/core";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import ShareIcon from "@material-ui/icons/Share";
 import { useTheme } from "../contexts/ThemeContextProvider";
+import { darkModeColors } from "../theme/colors";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -36,6 +37,9 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     cover: {
       width: 151,
+      height: "100%",
+      background: darkModeColors.accent,
+      borderRadius: 15,
       "@media(max-width:390px)": {
         width: 121,
       },
@@ -97,7 +101,7 @@ export default function MediaCard({
         </div>
         <CardMedia
           className={classes.cover}
-          image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4icmBWszJ-pWFjOr44XsSJy3zTAsk66SIJw&usqp=CAU"
+          image="/medicalservices.svg"
           title="Live from space album cover"
         />
       </Card>
@@ -134,7 +138,7 @@ export default function MediaCard({
           className={classes.cover}
           component="img"
           alt="hospital illustration"
-          image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4icmBWszJ-pWFjOr44XsSJy3zTAsk66SIJw&usqp=CAU"
+          image="/medicalservices.svg"
           title="Live from space album cover"
         />
       </CardActionArea>

@@ -1,12 +1,10 @@
-import Head from "next/head";
 import { HospitalsTemplate } from "../../templates/HospitalsTemplate";
 import { useLocation } from "../../contexts/LocationContextProvider";
 import { useQuery } from "react-query";
-import { useTheme } from "../../contexts/ThemeContextProvider";
+import { SEO } from "../../templates/SEO";
 
 export default function Hospitals() {
   const { regionPSGC, cityMunPSGC } = useLocation();
-  const { theme } = useTheme();
 
   const getHospitals = async () => {
     let url = "https://ncovgo.stanleygarbo.com/hospitals";
@@ -33,15 +31,10 @@ export default function Hospitals() {
 
   return (
     <div>
-      <Head>
-        <title>NCoV Go | See all the hospitals in the Philippines</title>
-        <meta
-          name="description"
-          content="Information about the hospitals in the Philippines. See all the hospitals in the Philippines and their information."
-        />
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="theme-color" content={theme.primaryLight} />
-      </Head>
+      <SEO
+        title="NCoV Go | See all the hospitals in the Philippines"
+        description="Information about the hospitals in the Philippines. See all the hospitals in the Philippines and their information."
+      />
       <HospitalsTemplate
         data={data}
         error={error}

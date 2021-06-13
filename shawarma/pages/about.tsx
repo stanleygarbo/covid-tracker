@@ -1,7 +1,7 @@
 import React from "react";
-import Head from "next/head";
 import { useTheme } from "../contexts/ThemeContextProvider";
 import styled from "styled-components";
+import { SEO } from "../templates/SEO";
 
 const Container = styled.div`
   color: ${({ theme }) => theme.textPrimaryDark};
@@ -28,15 +28,10 @@ const About = () => {
 
   return (
     <Container theme={theme}>
-      <Head>
-        <title>NCoV Go | About</title>
-        <meta
-          name="description"
-          content="NCoV Go was developed by Stanley Garbo. A Comp Sci student from the Philippines"
-        />
-        <meta name="theme-color" content={theme.primaryLight} />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <SEO
+        title="NCoV Go | About"
+        description="NCoV Go was developed by Stanley Garbo. A Comp Sci student from the Philippines."
+      />
       <h1 style={{ fontSize: 20 }}>
         This app was developed by Stanley Garbo and is still under development.
       </h1>

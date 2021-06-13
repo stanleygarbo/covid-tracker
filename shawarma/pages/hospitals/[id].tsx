@@ -1,22 +1,14 @@
-import Head from "next/head";
 import React from "react";
-import { useTheme } from "../../contexts/ThemeContextProvider";
 import { HospitalTemplate } from "../../templates/HospitalTemplate";
+import { SEO } from "../../templates/SEO";
 
 const Hospital = ({ data }) => {
-  const { theme } = useTheme();
-
   return (
     <div>
-      <Head>
-        <title>NCoV Go | {data.Cfname}</title>
-        <meta
-          name="description"
-          content={`Information about ${data.Cfname}. See the availability of beds in ${data.Cfname}`}
-        />
-        <meta name="theme-color" content={theme.accent} />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <SEO
+        title={`NCoV Go | ${data.Cfname}`}
+        description={`Information about ${data.Cfname}. See the availability of beds in ${data.Cfname}`}
+      />
       <HospitalTemplate data={data} />
     </div>
   );
