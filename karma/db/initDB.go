@@ -130,6 +130,7 @@ func InitDB() {
 		LOAD DATA LOCAL INFILE './tmp/coords.csv' 
 		INTO TABLE coords 
 		FIELDS TERMINATED BY ';' 
+		ENCLOSED BY '"'
 		LINES TERMINATED BY '\n'
 	`)
 	if err != nil {
