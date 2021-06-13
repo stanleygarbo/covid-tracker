@@ -13,7 +13,7 @@ import (
 )
 
 func CasesHandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
+	setupResponse(&w, r)
 
 	if !*ShouldRespond {
 		w.Write([]byte(`{"message": "Our server is updating data. Please come back shortly :)"}`))

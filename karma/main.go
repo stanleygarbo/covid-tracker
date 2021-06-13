@@ -13,7 +13,6 @@ import (
 	"github.com/gomodule/redigo/redis"
 	"github.com/gorilla/mux"
 	"github.com/robfig/cron/v3"
-	"github.com/rs/cors"
 )
 
 var pool *redis.Pool
@@ -55,14 +54,6 @@ func main(){
 
 	handlers.Pool = pool
 	handlers.ShouldRespond = &ShouldRespond
-
-	cors := cors.New(cors.Options{
-    AllowedOrigins: []string{"http://ncovgo.vercel.app", "https://ncovgo.vercel.app", "https://ncovgo.com", "http://ncovgo.com", "http://192.168.3.51:3000"},
-    AllowCredentials: true,
-    AllowedMethods: []string{"GET"},
-	})
-
-	handler := cors.Handler(r)
 	
 	c := cron.New()
 
@@ -76,5 +67,5 @@ func main(){
 
   c.Start()
 
-	http.ListenAndServe(":8000", handler)
+	http.ListenAndServe(":8000", r)
 }
