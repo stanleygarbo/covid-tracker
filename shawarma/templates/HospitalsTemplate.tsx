@@ -90,7 +90,7 @@ export const HospitalsTemplate: React.FC<IHospitalsTemplate> = ({
             key={i.Hfhudcode}
             withButton={false}
             title={truncate(i.Cfname, 35)}
-            onClick={() => router.push(`hospitals/${i.Hfhudcode}`)}
+            onClick={() => router.push(`/hospitals/${i.Hfhudcode}`)}
             subtitle={
               "Report Date: " + moment(i.Reportdate).format("MMMM D, YYYY")
             }
