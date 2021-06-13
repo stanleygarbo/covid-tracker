@@ -8,7 +8,7 @@ export default function Home() {
   const { regionRes, cityMunPSGC } = useLocation();
 
   const getCases = async () => {
-    let url = "https://ncovgo.stanleygarbo.com/cases";
+    let url = "https://ncovgo.stanleygarbo.com/cases?RegionRes=all";
     if (regionRes != "undefined" && regionRes) {
       url = `https://ncovgo.stanleygarbo.com/cases?RegionRes=${regionRes}`;
     }
