@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { useQuery } from "react-query";
 import { useLocation } from "../contexts/LocationContextProvider";
 import { HomeTemplate } from "../templates/HomeTemplate";
