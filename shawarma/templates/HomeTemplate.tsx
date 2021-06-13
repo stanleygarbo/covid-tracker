@@ -7,6 +7,7 @@ import moment from "moment";
 import { TopBarProgress } from "../components/TopBarProgress";
 import { ErrorMessage } from "../components/ErrorMessage";
 import { SelectArea } from "../components/SelectArea";
+import { numberWithCommas } from "../util/NumberWithCommas";
 
 const Container = styled.div`
   padding: 0px 50px 50px 50px;
@@ -270,7 +271,11 @@ export const HomeTemplate: React.FC<IHomeTemplate> = ({
         <div className="template__item template__chart">
           <div className="template__item__txt-group">
             <h3>Active</h3>
-            <h4>{activeCases && !isLoading ? activeCases.Count : "---"}</h4>
+            <h4>
+              {activeCases && !isLoading
+                ? numberWithCommas(activeCases.Count)
+                : "---"}
+            </h4>
           </div>
           <div className="template__item__chart">
             <LineChart
@@ -297,7 +302,7 @@ export const HomeTemplate: React.FC<IHomeTemplate> = ({
             <h3>Recoveries</h3>
             <h4>
               {recoveries && !isLoading
-                ? recoveries.Count
+                ? numberWithCommas(recoveries.Count)
                 : isLoading
                 ? "---"
                 : 0}
@@ -329,7 +334,11 @@ export const HomeTemplate: React.FC<IHomeTemplate> = ({
           <div className="template__item__txt-group">
             <h3>Deaths</h3>
             <h4>
-              {deaths && !isLoading ? deaths.Count : isLoading ? "---" : 0}
+              {deaths && !isLoading
+                ? numberWithCommas(deaths.Count)
+                : isLoading
+                ? "---"
+                : 0}
             </h4>
           </div>
           <div className="template__item__chart">
