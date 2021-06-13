@@ -100,10 +100,10 @@ export class Map extends Component {
               };
               if (
                 i.viewport.northeast.lng - i.viewport.southwest.lng <
-                  0.2580000000000001 &&
+                  0.1380000000000001 &&
                 i.viewport.northeast.lng - i.viewport.southwest.lng > 0 &&
                 i.viewport.northeast.lat - i.viewport.southwest.lat <
-                  0.2580000000000001 &&
+                  0.1380000000000001 &&
                 i.viewport.northeast.lat - i.viewport.southwest.lat > 0
               ) {
                 if (
