@@ -24,13 +24,13 @@ export const LocationContextProvider: React.FC<{ children: React.ReactChild }> =
       const loc = {
         regionPSGC: localStorage.getItem("regionPSGC")
           ? localStorage.getItem("regionPSGC")
-          : "all",
+          : "",
         regionRes: localStorage.getItem("regionRes")
           ? localStorage.getItem("regionRes")
-          : "all",
+          : "",
         cityMunPSGC: localStorage.getItem("cityMunPSGC")
           ? localStorage.getItem("cityMunPSGC")
-          : "all",
+          : "",
       };
 
       setRegionPSGCState(loc.regionPSGC);
